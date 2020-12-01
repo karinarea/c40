@@ -43,7 +43,7 @@ class Game {
 
   play(){
     form.hide();
-
+    player.getCarsInEnd();
     Player.getPlayerInfo();
     
     if(allPlayers !== undefined){ //GAME STARTS
@@ -85,12 +85,17 @@ class Game {
     }
     if(player.distance> 5250) {
       gameState = 2;
+      player.rank = player.rank + 1;
+      Player.updateCarsInEnd(player.rank);
     }
+  
+
     
     drawSprites();
   }
 
   end(){
     console.log("GAME ENDED");
+    console.log(player.rank);
   }
 }
